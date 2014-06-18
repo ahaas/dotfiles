@@ -39,9 +39,11 @@ syntax on
 
 au FocusLost * :wa
 
+set t_Co=256
 
 " For colorscheme and tab indents (\ig)
-colorscheme monokai
+colorscheme molokai
+let g:rehash256 = 1
 set background=dark
 set ts=4 sw=4 et
 let g:indent_guides_start_level = 2
@@ -58,8 +60,6 @@ set shiftwidth=4
 " Smartcase overrides ignorecase if uppercase used in string
 set ignorecase
 set smartcase
-
-set t_Co=256
 
 " Relative/absolute line numbers
 function! NumberToggle()
