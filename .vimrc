@@ -11,13 +11,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'bling/vim-airline'
-" Plugin 'edkolev/promptline.vim'
-" Plugin 'majutsushi/tagbar'
 Plugin 'nvie/vim-flake8'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
-" Plugin 'jceb/vim-editqf'
 Plugin 'fisadev/vim-isort'
 Plugin 'groenewege/vim-less'
 Plugin 'rking/ag.vim'
@@ -36,13 +33,6 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-
-" Inserting blank lines in normal mode (effectively)
-" from http://superuser.com/questions/607163
-" TODO: Need to figure out how to not make this mess
-" up pep8 plugin.
-" map <Enter> o<ESC>
-" map <S-Enter> O<ESC>
 
 syntax enable
 syntax on
