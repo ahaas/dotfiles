@@ -84,7 +84,7 @@ let g:flake8_max_line_length=99
 autocmd BufWritePost *.py call Flake8()
 
 let g:airline#extensions#default#layout = [
-    \ [ 'a', 'c' ],
+    \ [ 'a', 'b', 'c' ],
     \ [ 'x', 'z', 'warning' ]
     \ ]
 
