@@ -24,9 +24,18 @@ call vundle#end()
 
 filetype plugin indent on
 
-" Programming-language specific completion with
-" <CTRL-X><CTRL-O>
-"
+if has("gui_running")
+    set guifont=Inconsolata-dz\ for\ Powerline:h12
+    set guioptions=egmrt
+endif
+
+"Don't wrap
+set nowrap
+
+" Change colorcolumn color
+highlight ColorColumn guibg=#404040
+" Highlight 80th column
+set colorcolumn=80
 
 " Custom movement
 map <c-j> <c-w>j
@@ -37,6 +46,7 @@ map <c-h> <c-w>h
 syntax enable
 syntax on
 
+"Save on lost focus
 au FocusLost * :wa
 
 set t_Co=256
@@ -51,35 +61,69 @@ let g:indent_guides_guide_size = 1
 
 set autoindent
 set cindent
-set expandtab
 set ruler
 set smartindent
-set softtabstop=4
+
+"Tab changes (4 space tabs)
+set tabstop=4
 set shiftwidth=4
+set softtabstop=4
+set expandtab
 
 " Smartcase overrides ignorecase if uppercase used in string
 set ignorecase
 set smartcase
 
+"Disable arrow keys (except for up and down in insert mode for autocomplete)
+noremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
 " Relative/absolute line numbers
 function! NumberToggle()
   if(&relativenumber == 1)
     set number
-  else
+else
     set relativenumber
   endif
 endfunc
 
-nnoremap <C-n> :call NumberToggle()<cr>
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
-call NumberToggle()
+"Use tab to navigate bracket pairs
+nnoremap <tab> %
+vnoremap <tab> %
+ 
+"Relative line numbers
+set nonumber
+set relativenumber
 
-if has("gui_running")
-    set guifont=Inconsolata-dz\ for\ Powerline:h12
-    set guioptions=egmrt
-endif
+"Tab changes (4 space tabs)
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
+"Map command-[ and command-] to indenting or outdenting
+"while keeping the original selection in visual mode
+vmap <D-]> >gv
+vmap <D-[> <gv
+ 
+nmap <D-]> >>
+nmap <D-[> <<
+ 
+omap <D-]> >>
+omap <D-[> <<
+ 
+imap <D-]> <Esc>>>i
+imap <D-[> <Esc><<
+
+"Display whitespace
+:set listchars=tab:>-,trail:~,extends:>,precedes:<
+:set list
+
+"Auto Flake8 on save
 let g:flake8_max_line_length=99
 autocmd BufWritePost *.py call Flake8()
 
@@ -96,11 +140,12 @@ set encoding=utf-8 " Necessary to show unicode glyphs
 
 "Highlight search
 set hlsearch
+set showmatch
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" vim-airline settings
+"vim-airline settings
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
