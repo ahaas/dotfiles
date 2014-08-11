@@ -26,15 +26,36 @@ filetype plugin indent on
 
 if has("gui_running")
     set guifont=Inconsolata-dz\ for\ Powerline:h12
-    set guioptions=egmrt
+    set guioptions=egmt
 endif
 
-"Don't wrap
-set nowrap
+syntax enable
+syntax on
+
+set encoding=utf-8
+set scrolloff=3
+set autoindent
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set cursorline
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+set relativenumber
+
+let mapleader = ","
 
 " Change colorcolumn color
 highlight ColorColumn guibg=#404040
 " Highlight 80th column
+set wrap
+set textwidth=79
+set formatoptions=qrn1
 set colorcolumn=80
 
 " Custom movement
@@ -43,13 +64,31 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-syntax enable
-syntax on
+" Disable arrowkeys and make j&k visual
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+nnoremap <tab> %
+vnoremap <tab> %
+
+" Accidentally hitting f1
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+" Convenience
+nnoremap ; :
+inoremap jj <ESC>
 
 "Save on lost focus
 au FocusLost * :wa
-
-set t_Co=256
 
 " For colorscheme and tab indents (\ig)
 colorscheme molokai
@@ -58,7 +97,9 @@ set background=dark
 set ts=4 sw=4 et
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+set t_Co=256
 
+" Autoindent
 set autoindent
 set cindent
 set ruler
@@ -82,19 +123,10 @@ nnoremap <right> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" Relative/absolute line numbers
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-else
-    set relativenumber
-  endif
-endfunc
-
 "Use tab to navigate bracket pairs
 nnoremap <tab> %
 vnoremap <tab> %
- 
+
 "Relative line numbers
 set nonumber
 set relativenumber
@@ -109,18 +141,18 @@ set expandtab
 "while keeping the original selection in visual mode
 vmap <D-]> >gv
 vmap <D-[> <gv
- 
+
 nmap <D-]> >>
 nmap <D-[> <<
- 
+
 omap <D-]> >>
 omap <D-[> <<
- 
+
 imap <D-]> <Esc>>>i
 imap <D-[> <Esc><<
 
 "Display whitespace
-:set listchars=tab:>-,trail:~,extends:>,precedes:<
+:set listchars=tab:>-,trail:⋅,extends:>,precedes:<
 :set list
 
 "Auto Flake8 on save
@@ -151,4 +183,9 @@ let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
 "ctrl-p settings
-set wildignore+=*.pyc
+set wildignore+=*.py
+
+"Stop 'existing swap files' warning
+set shortmess+=A
+
+command Cdgmp execute "cd ~/Documents/_Andre/Projects/Node/Gridmp"
