@@ -183,7 +183,7 @@ let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
 "ctrl-p settings
-set wildignore+=*.py
+set wildignore+=*.pyc
 
 "Stop 'existing swap files' warning
 set shortmess+=A
