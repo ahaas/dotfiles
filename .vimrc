@@ -19,13 +19,14 @@ Plugin 'fisadev/vim-isort'
 Plugin 'groenewege/vim-less'
 Plugin 'rking/ag.vim'
 Plugin 'chrisbra/csv.vim'
+Plugin 'tomasr/molokai'
 
 call vundle#end()
 
 filetype plugin indent on
 
 if has("gui_running")
-    set guifont=Inconsolata-dz\ for\ Powerline:h12
+    set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
     set guioptions=egmt
 endif
 
@@ -56,7 +57,8 @@ highlight ColorColumn guibg=#404040
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=80
+" set colorcolumn=73,80
+execute "set colorcolumn=73," . join(range(80,335), ',')
 
 " Custom movement
 map <c-j> <c-w>j
