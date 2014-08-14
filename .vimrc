@@ -12,23 +12,19 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'bling/vim-airline'
 Plugin 'nvie/vim-flake8'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'fisadev/vim-isort'
 Plugin 'groenewege/vim-less'
-Plugin 'rking/ag.vim'
+Plugin 'digitaltoad/vim-jade'
 Plugin 'chrisbra/csv.vim'
 Plugin 'tomasr/molokai'
+Plugin 'w0ng/vim-hybrid'
 
 call vundle#end()
 
 filetype plugin indent on
-
-if has("gui_running")
-    set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
-    set guioptions=egmt
-endif
 
 syntax enable
 syntax on
@@ -86,8 +82,8 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 " Convenience
-nnoremap ; :
 inoremap jj <ESC>
+nnoremap ; :
 
 "Save on lost focus
 au FocusLost * :wa
@@ -100,6 +96,11 @@ set ts=4 sw=4 et
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 set t_Co=256
+
+if has("gui_running")
+    set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
+    set guioptions=egmt
+endif
 
 " Autoindent
 set autoindent
@@ -161,11 +162,6 @@ imap <D-[> <Esc><<
 let g:flake8_max_line_length=99
 autocmd BufWritePost *.py call Flake8()
 
-let g:airline#extensions#default#layout = [
-    \ [ 'a', 'b', 'c' ],
-    \ [ 'x', 'z', 'warning' ]
-    \ ]
-
 " For git gutter, make colors work properly on start
 au VimEnter * highlight clear SignColumn
 
@@ -183,6 +179,16 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+
+" These airline elements will disappear at these widths
+let g:airline#extensions#default#section_truncate_width = {
+      \ }
+
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c' ],
+    \ [ 'z', 'warning' ]
+    \ ]
 
 "ctrl-p settings
 set wildignore+=*.pyc
