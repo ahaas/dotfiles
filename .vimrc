@@ -1,3 +1,6 @@
+" This prevents Fish Shell from breaking vim
+set shell=/bin/bash
+
 set nocompatible   " Disable vi-compatibility
 filetype off
 
@@ -19,8 +22,10 @@ Plugin 'fisadev/vim-isort'
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'chrisbra/csv.vim'
+" themes
 Plugin 'tomasr/molokai'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'chriskempson/vim-tomorrow-theme'
 
 call vundle#end()
 
