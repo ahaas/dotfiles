@@ -94,7 +94,7 @@ nnoremap ; :
 au FocusLost * :wa
 
 " For colorscheme and tab indents (\ig)
-colorscheme molokai
+colorscheme tomorrow-night
 let g:rehash256 = 1
 set background=dark
 set ts=4 sw=4 et
@@ -118,10 +118,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-
-" Smartcase overrides ignorecase if uppercase used in string
-set ignorecase
-set smartcase
 
 "Disable arrow keys (except for up and down in insert mode for autocomplete)
 noremap <up> <nop>
@@ -173,9 +169,13 @@ au VimEnter * highlight clear SignColumn
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show unicode glyphs
 
-"Highlight search
+"Search settings
 set hlsearch
 set showmatch
+set incsearch
+set ignorecase
+set smartcase
+
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
