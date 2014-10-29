@@ -1,4 +1,4 @@
-" This prevents Fish Shell from breaking vim
+" This prevents other shells from breaking vim
 set shell=/bin/bash
 
 set nocompatible   " Disable vi-compatibility
@@ -18,7 +18,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
-Plugin 'fisadev/vim-isort'
+" Plugin 'fisadev/vim-isort'
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'chrisbra/csv.vim'
@@ -87,23 +87,21 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 " Convenience
-inoremap jj <ESC>
 nnoremap ; :
 
 "Save on lost focus
 au FocusLost * :wa
 
 " For colorscheme and tab indents (\ig)
-colorscheme tomorrow-night
+colorscheme molokai
 let g:rehash256 = 1
 set background=dark
-set ts=4 sw=4 et
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 set t_Co=256
 
 if has("gui_running")
-    set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h12
+    set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h14
     set guioptions=egmt
 endif
 
@@ -113,11 +111,13 @@ set cindent
 set ruler
 set smartindent
 
-"Tab changes (4 space tabs)
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+"Tab changes (2 space tabs)
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
 
 "Disable arrow keys (except for up and down in insert mode for autocomplete)
 noremap <up> <nop>
@@ -134,12 +134,6 @@ vnoremap <tab> %
 "Relative line numbers
 set nonumber
 set relativenumber
-
-"Tab changes (4 space tabs)
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
 
 "Map command-[ and command-] to indenting or outdenting
 "while keeping the original selection in visual mode
@@ -161,9 +155,10 @@ imap <D-[> <Esc><<
 
 "Auto Flake8 on save
 let g:flake8_max_line_length=99
-autocmd BufWritePost *.py call Flake8()
+"Automatically run Flake8 on save
+"autocmd BufWritePost *.py call Flake8()
 
-" For git gutter, make colors work properly on start
+"For git gutter, make colors work properly on start
 au VimEnter * highlight clear SignColumn
 
 set laststatus=2   " Always show the statusline
@@ -200,5 +195,3 @@ set wildignore+=*.pyc
 
 "Stop 'existing swap files' warning
 set shortmess+=A
-
-command Cdgmp execute "cd ~/Documents/_Andre/Projects/Node/Gridmp"
