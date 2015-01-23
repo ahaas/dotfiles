@@ -1,0 +1,20 @@
+# Global .gitignore
+
+# Mac OS X hidden files
+.DS_Store
+
+# Vim swap files
+.*.sw?
+*.swo
+*.swp
+
+# RVM and rbenv
+/.rvmrc
+/.rbenv-version
+
+# Bundler binstubs
+/bin/
+
+*.pyc
+
+*.cache
