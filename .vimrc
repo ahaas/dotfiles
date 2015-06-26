@@ -192,6 +192,8 @@ let g:airline#extensions#default#layout = [
 
 "ctrl-p settings
 set wildignore+=*.pyc
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
 
 "Stop 'existing swap files' warning
 set shortmess+=A
