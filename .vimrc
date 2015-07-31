@@ -194,6 +194,8 @@ let g:airline#extensions#default#layout = [
 set wildignore+=*.pyc
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
+let g:ctrlp_cache_dir='$HOME/.cache/ctrlp'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 "Stop 'existing swap files' warning
 set shortmess+=A
