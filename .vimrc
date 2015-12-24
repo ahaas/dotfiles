@@ -18,14 +18,23 @@ Plugin 'nvie/vim-flake8'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
-" Plugin 'fisadev/vim-isort'
+Plugin 'majutsushi/tagbar'
+Plugin 'mkitt/tabline.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
-Plugin 'chrisbra/csv.vim'
+" markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " themes
 Plugin 'tomasr/molokai'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'jonathanfilip/vim-lucius'
+" syntax highlighting
+Plugin 'derekwyatt/vim-scala'
+Plugin 'fatih/vim-go'
+Plugin 'endel/vim-github-colorscheme'
+
+Plugin 'vim-scripts/cool.vim'
+set modeline
 
 call vundle#end()
 
@@ -53,7 +62,7 @@ set relativenumber
 let mapleader = ","
 
 " Change colorcolumn color
-highlight ColorColumn guibg=#404040
+highlight ColorColumn guibg=#303030
 " Highlight 80th column
 set wrap
 set textwidth=79
@@ -93,15 +102,16 @@ nnoremap ; :
 au FocusLost * :wa
 
 " For colorscheme and tab indents (\ig)
+set t_Co=256
 colorscheme molokai
 let g:rehash256 = 1
 set background=dark
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-set t_Co=256
 
 if has("gui_running")
-    set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h14
+    " set guifont=Inconsolata-dz\ for\ Powerline:h12
+    set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
     set guioptions=egmt
 endif
 
@@ -117,7 +127,10 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype java setlocal ts=4 sts=4 sw=4
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype python setlocal ts=4 sts=4 sw=4
+autocmd Filetype go setlocal nolist tabstop=4 sts=4 sw=4 noexpandtab
 
 "Disable arrow keys (except for up and down in insert mode for autocomplete)
 noremap <up> <nop>
@@ -176,10 +189,12 @@ set smartcase
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 "vim-airline settings
+"let g:airline_theme = ''
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
 
 " These airline elements will disappear at these widths
 let g:airline#extensions#default#section_truncate_width = {
@@ -190,12 +205,15 @@ let g:airline#extensions#default#layout = [
     \ [ 'z', 'warning' ]
     \ ]
 
+"vimi markdown
+let g:vim_markdown_folding_disabled=1
+
 "ctrl-p settings
+let g:ctrlp_max_files = 100000
 set wildignore+=*.pyc
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
-let g:ctrlp_cache_dir='$HOME/.cache/ctrlp'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 "Stop 'existing swap files' warning
 set shortmess+=A
+
+"Conque Term
+let g:ConqueTerm_EscKey = '<C-c>'
