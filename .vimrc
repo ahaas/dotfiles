@@ -13,7 +13,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'nvie/vim-flake8'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
@@ -177,43 +178,41 @@ au VimEnter * highlight clear SignColumn
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show unicode glyphs
 
-"Search settings
-set hlsearch
-set showmatch
-set incsearch
-set ignorecase
-set smartcase
-
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 "vim-airline settings
-"let g:airline_theme = ''
+let g:airline_theme = 'molokai'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 
-" These airline elements will disappear at these widths
-let g:airline#extensions#default#section_truncate_width = {
-      \ }
-
-let g:airline#extensions#default#layout = [
-    \ [ 'a', 'b', 'c' ],
-    \ [ 'z', 'warning' ]
-    \ ]
-
-"vimi markdown
+"vim markdown
 let g:vim_markdown_folding_disabled=1
 
 "ctrl-p settings
-let g:ctrlp_max_files = 100000
-set wildignore+=*.pyc
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
 
 "Stop 'existing swap files' warning
 set shortmess+=A
+
+"Search settings
+set hlsearch
+set showmatch
+set ignorecase
+set smartcase
 
 "Conque Term
 let g:ConqueTerm_EscKey = '<C-c>'
