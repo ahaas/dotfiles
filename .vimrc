@@ -31,7 +31,6 @@ Plugin 'tomasr/molokai'
 Plugin 'jonathanfilip/vim-lucius'
 " syntax highlighting
 Plugin 'derekwyatt/vim-scala'
-Plugin 'fatih/vim-go'
 Plugin 'endel/vim-github-colorscheme'
 
 Plugin 'vim-scripts/cool.vim'
@@ -127,11 +126,6 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype java setlocal ts=4 sts=4 sw=4
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype python setlocal ts=4 sts=4 sw=4
-autocmd Filetype go setlocal nolist tabstop=4 sts=4 sw=4 noexpandtab
 
 "Disable arrow keys (except for up and down in insert mode for autocomplete)
 noremap <up> <nop>
