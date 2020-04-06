@@ -21,8 +21,6 @@ Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mkitt/tabline.vim'
-Plugin 'groenewege/vim-less'
-Plugin 'digitaltoad/vim-jade'
 " markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
@@ -31,7 +29,9 @@ Plugin 'tomasr/molokai'
 Plugin 'jonathanfilip/vim-lucius'
 " syntax highlighting
 Plugin 'derekwyatt/vim-scala'
+Plugin 'fatih/vim-go'
 Plugin 'endel/vim-github-colorscheme'
+Plugin 'pangloss/vim-javascript'
 
 Plugin 'vim-scripts/cool.vim'
 set modeline
@@ -126,6 +126,11 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype java setlocal ts=4 sts=4 sw=4
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype python setlocal ts=4 sts=4 sw=4
+autocmd Filetype go setlocal nolist tabstop=4 sts=4 sw=4 noexpandtab
 
 "Disable arrow keys (except for up and down in insert mode for autocomplete)
 noremap <up> <nop>
@@ -160,11 +165,6 @@ imap <D-[> <Esc><<
 "Display whitespace
 :set listchars=tab:>-,trail:⋅,extends:>,precedes:<
 :set list
-
-"Auto Flake8 on save
-let g:flake8_max_line_length=99
-"Automatically run Flake8 on save
-"autocmd BufWritePost *.py call Flake8()
 
 "For git gutter, make colors work properly on start
 au VimEnter * highlight clear SignColumn
